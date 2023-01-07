@@ -39,18 +39,19 @@ public class Pregunta {
 	public void muestraPreguntaVotada() {
 		System.out.println(enunciado);
 		int numRespuesta = 1;
+		float votosTotales = this.getTotalVotos();
+		double porcentaje;
 		for (Respuesta respuesta : this.respuestas) {
-			double porcentaje; 
-			float votosRespuesta = respuesta.getVotos();
-			float votosTotales = this.getTotalVotos();
-			
+
+			int votosRespuesta = respuesta.getVotos();
+
 			if (votosTotales == 0) {
 				porcentaje = 0;
 			} else {
-				porcentaje = Math.round(votosRespuesta / votosTotales) * 100;
+				porcentaje = (votosRespuesta / votosTotales) * 100;
 			}
 
-			System.out.println(numRespuesta + " ." + respuesta.getTexto() + " " + respuesta.getVotos() + " votos" + " ("
+			System.out.println(numRespuesta + ". " + respuesta.getTexto() + " " + votosRespuesta + " votos" + " ("
 					+ porcentaje + "%)");
 			numRespuesta++;
 		}
